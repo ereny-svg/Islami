@@ -8,12 +8,19 @@ class AppTheme {
   static const Color gold = Color(0xFFFACC10);
 
   static ThemeData lightTheme = ThemeData(
+      scaffoldBackgroundColor: Colors.transparent,
+      textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+              color: black, fontSize: 25, fontWeight: FontWeight.w400),
+          titleLarge: TextStyle(
+              color: black, fontSize: 20, fontWeight: FontWeight.w400)),
       primaryColor: lightPrimary,
-      appBarTheme:const  AppBarTheme(
+      appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: black),
           backgroundColor: Colors.transparent,
           centerTitle: true,
           titleTextStyle: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black)),
+              fontSize: 30, fontWeight: FontWeight.bold, color: black)),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: lightPrimary,
         type: BottomNavigationBarType.fixed,
