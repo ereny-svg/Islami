@@ -11,7 +11,7 @@ class AppTheme {
       scaffoldBackgroundColor: Colors.transparent,
       textTheme: const TextTheme(
           headlineSmall: TextStyle(
-              color: black, fontSize: 25, fontWeight: FontWeight.w400),
+              color: black, fontSize: 25, fontWeight: FontWeight.w600),
           titleLarge: TextStyle(
               color: black, fontSize: 20, fontWeight: FontWeight.w400)),
       primaryColor: lightPrimary,
@@ -28,5 +28,26 @@ class AppTheme {
         selectedItemColor: black,
         unselectedItemColor: white,
       ));
-  static ThemeData darkTheme = ThemeData();
+
+  static ThemeData darkTheme = ThemeData(
+      scaffoldBackgroundColor: Colors.transparent,
+      textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+              color: white, fontSize: 25, fontWeight: FontWeight.w600),
+          titleLarge: TextStyle(
+              color: gold, fontSize: 20, fontWeight: FontWeight.w400)),
+      primaryColor: darkPrimary,
+      appBarTheme: const AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(color: white),
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+              fontSize: 30, fontWeight: FontWeight.bold, color: white)),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: darkPrimary,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: gold,
+        unselectedItemColor: white,
+      ));
 }

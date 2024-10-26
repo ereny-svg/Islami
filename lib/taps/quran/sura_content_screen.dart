@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/app_theme.dart';
 import 'package:islami/taps/quran/quran_tap.dart';
+import 'package:islami/taps/setting/setting.dart';
 import 'package:islami/widget/loading_indicator.dart';
+import 'package:provider/provider.dart';
 
 class SuraContentScreen extends StatefulWidget {
   static const String routname = '/sura';
@@ -18,6 +20,7 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SettingProvider settingProvider = Provider.of<SettingProvider>(context);
     content = ModalRoute.of(context)!.settings.arguments as SuraContent;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -25,9 +28,10 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
       loadfiles();
     }
     return Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/default_bg.png'),
+                image: AssetImage(
+                    'assets/images/${settingProvider.backGroundName}'),
                 fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(title: Text(content.suraname)),
@@ -38,7 +42,9 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
                 EdgeInsets.symmetric(horizontal: 29, vertical: height * 0.07),
             padding: EdgeInsets.only(top: height * 0.024),
             decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.20),
+                color: settingProvider.isDark
+                    ? AppTheme.darkPrimary
+                    : AppTheme.lightPrimary,
                 borderRadius: BorderRadius.circular(25)),
             child: ayat.isEmpty
                 ? LoadingIndicator()
