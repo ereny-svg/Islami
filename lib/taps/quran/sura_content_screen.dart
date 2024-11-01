@@ -44,7 +44,7 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
             decoration: BoxDecoration(
                 color: settingProvider.isDark
                     ? AppTheme.darkPrimary
-                    : AppTheme.lightPrimary,
+                    : AppTheme.white,
                 borderRadius: BorderRadius.circular(25)),
             child: ayat.isEmpty
                 ? LoadingIndicator()

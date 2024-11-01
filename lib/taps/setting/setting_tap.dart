@@ -35,10 +35,8 @@ class _SettingTapState extends State<SettingTap> {
               Switch(
                 value:
                     settingProvider.themeMode == ThemeMode.light ? false : true,
-                onChanged: (value) => settingProvider.changeTheme(
-                    value == true ? ThemeMode.dark : ThemeMode.light),
+                onChanged: (value) => settingProvider.setTheme(value),
                 activeTrackColor: AppTheme.gold,
-               
               )
             ],
           ),
@@ -70,9 +68,9 @@ class _SettingTapState extends State<SettingTap> {
                         )
                         .toList(),
                     onChanged: (selectedlanguage) {
-                      if (selectedlanguage != Null) {
+                      if (selectedlanguage != null) {
                         settingProvider
-                            .changeLanguage(selectedlanguage!.languageCode);
+                            .setLanguage(selectedlanguage.languageCode);
                       }
                     },
                     borderRadius: BorderRadius.circular(20),

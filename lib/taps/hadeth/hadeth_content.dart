@@ -29,7 +29,7 @@ class HadethContent extends StatelessWidget {
             decoration: BoxDecoration(
                 color: settingProvider.isDark
                     ? AppTheme.darkPrimary
-                    : AppTheme.lightPrimary,
+                    : AppTheme.white,
                 borderRadius: BorderRadius.circular(25)),
             child: ListView.builder(
               itemBuilder: (_, index) => Text(

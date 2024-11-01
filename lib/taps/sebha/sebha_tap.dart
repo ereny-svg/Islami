@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/app_theme.dart';
+import 'package:islami/taps/setting/setting.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTap extends StatefulWidget {
   @override
@@ -12,6 +16,7 @@ class _SebhaTapState extends State<SebhaTap> {
   double angle = 0;
   @override
   Widget build(BuildContext context) {
+    SettingProvider settingProvider = Provider.of<SettingProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
@@ -23,7 +28,7 @@ class _SebhaTapState extends State<SebhaTap> {
           Transform.translate(
             offset: const Offset(15, 28),
             child: Image.asset(
-              'assets/images/head_sebha_logo.png',
+              'assets/images/${settingProvider.imageHeadSebha}',
               height: 105,
               width: 73,
             ),
@@ -49,7 +54,7 @@ class _SebhaTapState extends State<SebhaTap> {
                   print(taps);
                 },
                 child: Image.asset(
-                  'assets/images/body_sebha_logo.png',
+                  'assets/images/${settingProvider.imageSebha}',
                   height: 234,
                   width: 232,
                 ),
@@ -58,7 +63,7 @@ class _SebhaTapState extends State<SebhaTap> {
             height: 30,
           ),
           Text(
-            'عدد التسبيحات',
+            AppLocalizations.of(context)!.numberOfPraises,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineSmall,
           ),
@@ -86,14 +91,17 @@ class _SebhaTapState extends State<SebhaTap> {
             width: 137,
             height: 51,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              color: Theme.of(context).primaryColor,
-            ),
+                borderRadius: BorderRadius.circular(25),
+                color: settingProvider.themeMode == ThemeMode.light
+                    ? AppTheme.lightPrimary
+                    : AppTheme.gold),
             child: Center(
                 child: Text(
               text,
-              style: const TextStyle(
-                  color: Colors.white,
+              style: TextStyle(
+                  color: settingProvider.themeMode == ThemeMode.light
+                      ? AppTheme.white
+                      : AppTheme.black,
                   fontSize: 25,
                   fontWeight: FontWeight.w400),
             )),
